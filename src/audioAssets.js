@@ -4,11 +4,11 @@
 var audioData = [
     {
         'title' : 'Episode 140',
-        'url' : 'https://feeds.soundcloud.com/stream/275202399-amazon-web-services-306355661-amazon-web-services.mp3'
+        'url' : 'https://archive.org/download/gd73-02-15.sbd.hall.1580.sbeok.shnf/gd73-02-15d1t01.mp3'
     },
     {
         'title' : 'Episode 139',
-        'url' : 'https://feeds.soundcloud.com/stream/274166909-amazon-web-services-306355661-aws-podcast-episode-139.mp3'
+        'url' : 'https://archive.org/download/gd73-02-15.sbd.hall.1580.sbeok.shnf/gd73-02-15d1t02.mp3'
     }
 ];
 

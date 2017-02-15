@@ -40,6 +40,23 @@ var stateHandlers = {
             }
             controller.play.call(this);
         },
+        'PlayAudioFromYear' : function() {
+            var year = this.request.intent.slots.year.value;
+
+            if (!this.attributes['playOrder']) {
+                // Initialize Attributes if undefined.
+                this.attributes['playOrder'] = Array.apply(null, {length: audioData.length}).map(Number.call, Number);
+                this.attributes['index'] = 0;
+                this.attributes['offsetInMilliseconds'] = 0;
+                this.attributes['loop'] = true;
+                this.attributes['shuffle'] = false;
+                this.attributes['playbackIndexChanged'] = true;
+                //  Change state to START_MODE
+                this.handler.state = constants.states.START_MODE;
+            }
+            controller.play.call(this);
+
+        },
         'AMAZON.HelpIntent' : function () {
             var message = 'Welcome to the AWS Podcast. You can say, play the audio, to begin the podcast.';
             this.response.speak(message).listen(message);
@@ -108,7 +125,7 @@ var stateHandlers = {
         'AMAZON.StartOverIntent' : function () { controller.startOver.call(this) },
         'AMAZON.HelpIntent' : function () {
             // This will called while audio is playing and a user says "ask <invocation_name> for help"
-            var message = 'You are listening to the AWS Podcast. You can say, Next or Previous to navigate through the playlist. ' +
+            var message = 'You are listening to a concert from 1979. You can say, Next or Previous to navigate through the playlist. ' +
                 'At any time, you can say Pause to pause the audio and Resume to resume.';
             this.response.speak(message).listen(message);
             this.emit(':responseReady');
@@ -117,7 +134,7 @@ var stateHandlers = {
             // No session ended logic
         },
         'Unhandled' : function () {
-            var message = 'Sorry, I could not understand. You can say, Next or Previous to navigate through the playlist.';
+            var message = 'Sorry, I could not understand. You can say, Next or Previous to navigate through the music.';
             this.response.speak(message).listen(message);
             this.emit(':responseReady');
         }

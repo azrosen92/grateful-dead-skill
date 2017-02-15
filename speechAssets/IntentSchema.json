@@ -1,7 +1,13 @@
 {
   "intents": [
     {
-      "intent": "PlayAudio"
+      "intent": "PlayAudioFromYear",
+      "slots": [
+        {
+          "name": "year",
+          "type": "AMAZON.FOUR_DIGIT_NUMBER"
+        }
+      ]
     },
     {
       "intent": "AMAZON.PauseIntent"
